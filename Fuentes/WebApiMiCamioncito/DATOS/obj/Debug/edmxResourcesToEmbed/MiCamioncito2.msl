@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MiCamioncito2ModelStoreContainer" CdmEntityContainer="MiCamioncito2Entities">
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="MiCamioncito2Model.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="CLT_Id" ColumnName="CLT_Id" />
+          <ScalarProperty Name="CLT_Nombre" ColumnName="CLT_Nombre" />
+          <ScalarProperty Name="CLT_TCLT_Id" ColumnName="CLT_TCLT_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Costo_Servicio">
+      <EntityTypeMapping TypeName="MiCamioncito2Model.Costo_Servicio">
+        <MappingFragment StoreEntitySet="Costo_Servicio">
+          <ScalarProperty Name="CS_Id" ColumnName="CS_Id" />
+          <ScalarProperty Name="CS_SRV_Id" ColumnName="CS_SRV_Id" />
+          <ScalarProperty Name="CS_Viaticos" ColumnName="CS_Viaticos" />
+          <ScalarProperty Name="CS_GastosAdicionales" ColumnName="CS_GastosAdicionales" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado">
+      <EntityTypeMapping TypeName="MiCamioncito2Model.Empleado">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="EMP_Id" ColumnName="EMP_Id" />
+          <ScalarProperty Name="EMP_Nombre" ColumnName="EMP_Nombre" />
+          <ScalarProperty Name="EMP_Estado" ColumnName="EMP_Estado" />
+          <ScalarProperty Name="EMP_TEMP_Id" ColumnName="EMP_TEMP_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleado_Servicio">
+      <EntityTypeMapping TypeName="MiCamioncito2Model.Empleado_Servicio">
+        <MappingFragment StoreEntitySet="Empleado_Servicio">
+          <ScalarProperty Name="ES_Id" ColumnName="ES_Id" />
+          <ScalarProperty Name="ES_EMP_Id" ColumnName="ES_EMP_Id" />
+          <ScalarProperty Name="ES_SRV_Id" ColumnName="ES_SRV_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Servicio">
+      <EntityTypeMapping TypeName="MiCamioncito2Model.Servicio">
+        <MappingFragment StoreEntitySet="Servicio">
+          <ScalarProperty Name="SRV_Id" ColumnName="SRV_Id" />
+          <ScalarProperty Name="SRV_VH_Id" ColumnName="SRV_VH_Id" />
+          <ScalarProperty Name="SRV_CLT_Id" ColumnName="SRV_CLT_Id" />
+          <ScalarProperty Name="SRV_FechaInicio" ColumnName="SRV_FechaInicio" />
+          <ScalarProperty Name="SRV_FechaFin" ColumnName="SRV_FechaFin" />
+          <ScalarProperty Name="SRV_DireccionInicio" ColumnName="SRV_DireccionInicio" />
+          <ScalarProperty Name="SRV_DireccionFin" ColumnName="SRV_DireccionFin" />
+          <ScalarProperty Name="SRV_Refencia_Papeleria" ColumnName="SRV_Refencia_Papeleria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Carga">
+      <EntityTypeMapping TypeName="MiCamioncito2Model.Tipo_Carga">
+        <MappingFragment StoreEntitySet="Tipo_Carga">
+          <ScalarProperty Name="TC_Id" ColumnName="TC_Id" />
+          <ScalarProperty Name="TC_Nombre" ColumnName="TC_Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Cliente">
+      <EntityTypeMapping TypeName="MiCamioncito2Model.Tipo_Cliente">
+        <MappingFragment StoreEntitySet="Tipo_Cliente">
+          <ScalarProperty Name="TCLT_Id" ColumnName="TCLT_Id" />
+          <ScalarProperty Name="TCLT_Nombre" ColumnName="TCLT_Nombre" />
+          <ScalarProperty Name="TCLT_Porcentaje" ColumnName="TCLT_Porcentaje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Empleado">
+      <EntityTypeMapping TypeName="MiCamioncito2Model.Tipo_Empleado">
+        <MappingFragment StoreEntitySet="Tipo_Empleado">
+          <ScalarProperty Name="TEMP_Id" ColumnName="TEMP_Id" />
+          <ScalarProperty Name="TEMP_Nombre" ColumnName="TEMP_Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehiculo">
+      <EntityTypeMapping TypeName="MiCamioncito2Model.Vehiculo">
+        <MappingFragment StoreEntitySet="Vehiculo">
+          <ScalarProperty Name="VH_Id" ColumnName="VH_Id" />
+          <ScalarProperty Name="VH_Capacidad" ColumnName="VH_Capacidad" />
+          <ScalarProperty Name="VH_Consumo" ColumnName="VH_Consumo" />
+          <ScalarProperty Name="VH_Distancia" ColumnName="VH_Distancia" />
+          <ScalarProperty Name="VH_Disponibilidad" ColumnName="VH_Disponibilidad" />
+          <ScalarProperty Name="VH_CostoDepreciacion" ColumnName="VH_CostoDepreciacion" />
+          <ScalarProperty Name="VH_TC_Id" ColumnName="VH_TC_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_MC2_EDITAR_VEHICULO" FunctionName="MiCamioncito2Model.Store.SP_MC2_EDITAR_VEHICULO" />
+    <FunctionImportMapping FunctionImportName="SP_MC2_ELIMINAR_VEHICULO" FunctionName="MiCamioncito2Model.Store.SP_MC2_ELIMINAR_VEHICULO" />
+    <FunctionImportMapping FunctionImportName="SP_MC2_INSERTAR_VEHICULO" FunctionName="MiCamioncito2Model.Store.SP_MC2_INSERTAR_VEHICULO" />
+    <FunctionImportMapping FunctionImportName="SP_MC2_LISTADO_CLIENTES" FunctionName="MiCamioncito2Model.Store.SP_MC2_LISTADO_CLIENTES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MiCamioncito2Model.SP_MC2_LISTADO_CLIENTES_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_MIC2_EDITAR_CLIENTE" FunctionName="MiCamioncito2Model.Store.SP_MIC2_EDITAR_CLIENTE" />
+    <FunctionImportMapping FunctionImportName="SP_MIC2_EDITAR_EMPLEADO" FunctionName="MiCamioncito2Model.Store.SP_MIC2_EDITAR_EMPLEADO" />
+    <FunctionImportMapping FunctionImportName="SP_MIC2_ELIMINAR_CLIENTE" FunctionName="MiCamioncito2Model.Store.SP_MIC2_ELIMINAR_CLIENTE" />
+    <FunctionImportMapping FunctionImportName="SP_MIC2_ELIMINAR_EMPLEADO" FunctionName="MiCamioncito2Model.Store.SP_MIC2_ELIMINAR_EMPLEADO" />
+    <FunctionImportMapping FunctionImportName="SP_MIC2_INSERTAR_CLIENTE" FunctionName="MiCamioncito2Model.Store.SP_MIC2_INSERTAR_CLIENTE" />
+    <FunctionImportMapping FunctionImportName="SP_MIC2_INSERTAR_COSTO_SERVICIO" FunctionName="MiCamioncito2Model.Store.SP_MIC2_INSERTAR_COSTO_SERVICIO" />
+    <FunctionImportMapping FunctionImportName="SP_MIC2_INSERTAR_EMPLEADO" FunctionName="MiCamioncito2Model.Store.SP_MIC2_INSERTAR_EMPLEADO" />
+    <FunctionImportMapping FunctionImportName="SP_MIC2_INSERTAR_EMPLEADO_SERVICIO" FunctionName="MiCamioncito2Model.Store.SP_MIC2_INSERTAR_EMPLEADO_SERVICIO" />
+    <FunctionImportMapping FunctionImportName="SP_MIC2_INSERTAR_SERVICIO" FunctionName="MiCamioncito2Model.Store.SP_MIC2_INSERTAR_SERVICIO" />
+  </EntityContainerMapping>
+</Mapping>

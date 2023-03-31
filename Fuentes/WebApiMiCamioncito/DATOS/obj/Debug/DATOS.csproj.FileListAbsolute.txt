@@ -1,0 +1,10 @@
+C:\Users\robin\source\repos\WebApiMiCamioncito\DATOS\bin\Debug\DATOS.dll.config
+C:\Users\robin\source\repos\WebApiMiCamioncito\DATOS\bin\Debug\DATOS.dll
+C:\Users\robin\source\repos\WebApiMiCamioncito\DATOS\bin\Debug\DATOS.pdb
+C:\Users\robin\source\repos\WebApiMiCamioncito\DATOS\bin\Debug\EntityFramework.dll
+C:\Users\robin\source\repos\WebApiMiCamioncito\DATOS\bin\Debug\EntityFramework.xml
+C:\Users\robin\source\repos\WebApiMiCamioncito\DATOS\obj\Debug\DATOS.csprojAssemblyReference.cache
+C:\Users\robin\source\repos\WebApiMiCamioncito\DATOS\obj\Debug\DATOS.csproj.CoreCompileInputs.cache
+C:\Users\robin\source\repos\WebApiMiCamioncito\DATOS\obj\Debug\DATOS.csproj.CopyComplete
+C:\Users\robin\source\repos\WebApiMiCamioncito\DATOS\obj\Debug\DATOS.dll
+C:\Users\robin\source\repos\WebApiMiCamioncito\DATOS\obj\Debug\DATOS.pdb

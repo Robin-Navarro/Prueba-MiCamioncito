@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MiCamioncito2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="CLT_Id" />
+    </Key>
+    <Property Name="CLT_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CLT_Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="CLT_TCLT_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Costo_Servicio">
+    <Key>
+      <PropertyRef Name="CS_Id" />
+    </Key>
+    <Property Name="CS_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CS_SRV_Id" Type="int" Nullable="false" />
+    <Property Name="CS_Viaticos" Type="int" Nullable="false" />
+    <Property Name="CS_GastosAdicionales" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="EMP_Id" />
+    </Key>
+    <Property Name="EMP_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EMP_Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EMP_Estado" Type="int" Nullable="false" />
+    <Property Name="EMP_TEMP_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empleado_Servicio">
+    <Key>
+      <PropertyRef Name="ES_Id" />
+    </Key>
+    <Property Name="ES_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ES_EMP_Id" Type="int" Nullable="false" />
+    <Property Name="ES_SRV_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Servicio">
+    <Key>
+      <PropertyRef Name="SRV_Id" />
+    </Key>
+    <Property Name="SRV_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SRV_VH_Id" Type="int" Nullable="false" />
+    <Property Name="SRV_CLT_Id" Type="int" Nullable="false" />
+    <Property Name="SRV_FechaInicio" Type="date" Nullable="false" />
+    <Property Name="SRV_FechaFin" Type="date" Nullable="false" />
+    <Property Name="SRV_DireccionInicio" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="SRV_DireccionFin" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="SRV_Refencia_Papeleria" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Carga">
+    <Key>
+      <PropertyRef Name="TC_Id" />
+    </Key>
+    <Property Name="TC_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TC_Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Cliente">
+    <Key>
+      <PropertyRef Name="TCLT_Id" />
+    </Key>
+    <Property Name="TCLT_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TCLT_Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="TCLT_Porcentaje" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Empleado">
+    <Key>
+      <PropertyRef Name="TEMP_Id" />
+    </Key>
+    <Property Name="TEMP_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TEMP_Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vehiculo">
+    <Key>
+      <PropertyRef Name="VH_Id" />
+    </Key>
+    <Property Name="VH_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VH_Capacidad" Type="int" Nullable="false" />
+    <Property Name="VH_Consumo" Type="int" Nullable="false" />
+    <Property Name="VH_Distancia" Type="int" Nullable="false" />
+    <Property Name="VH_Disponibilidad" Type="int" Nullable="false" />
+    <Property Name="VH_CostoDepreciacion" Type="int" Nullable="false" />
+    <Property Name="VH_TC_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="fk_Cliente_TipoCliente">
+    <End Role="Tipo_Cliente" Type="Self.Tipo_Cliente" Multiplicity="1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Cliente">
+        <PropertyRef Name="TCLT_Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="CLT_TCLT_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Costo_Servicio">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+    <End Role="Costo_Servicio" Type="Self.Costo_Servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="SRV_Id" />
+      </Principal>
+      <Dependent Role="Costo_Servicio">
+        <PropertyRef Name="CS_SRV_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_EmpleadoSRV_Empleado">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Empleado_Servicio" Type="Self.Empleado_Servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="EMP_Id" />
+      </Principal>
+      <Dependent Role="Empleado_Servicio">
+        <PropertyRef Name="ES_EMP_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_EmpleadoSRV_Servicio">
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="1" />
+    <End Role="Empleado_Servicio" Type="Self.Empleado_Servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servicio">
+        <PropertyRef Name="SRV_Id" />
+      </Principal>
+      <Dependent Role="Empleado_Servicio">
+        <PropertyRef Name="ES_SRV_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Piloto_TipoEmpleado">
+    <End Role="Tipo_Empleado" Type="Self.Tipo_Empleado" Multiplicity="1" />
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Empleado">
+        <PropertyRef Name="TEMP_Id" />
+      </Principal>
+      <Dependent Role="Empleado">
+        <PropertyRef Name="EMP_TEMP_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Servicio_Cliente">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="CLT_Id" />
+      </Principal>
+      <Dependent Role="Servicio">
+        <PropertyRef Name="SRV_CLT_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Servicio_Vehiculo">
+    <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="1" />
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehiculo">
+        <PropertyRef Name="VH_Id" />
+      </Principal>
+      <Dependent Role="Servicio">
+        <PropertyRef Name="SRV_VH_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Vehiculo_Carga">
+    <End Role="Tipo_Carga" Type="Self.Tipo_Carga" Multiplicity="1" />
+    <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Carga">
+        <PropertyRef Name="TC_Id" />
+      </Principal>
+      <Dependent Role="Vehiculo">
+        <PropertyRef Name="VH_TC_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_MC2_EDITAR_VEHICULO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Capacidad" Type="int" Mode="In" />
+    <Parameter Name="Consumo" Type="int" Mode="In" />
+    <Parameter Name="Distancia" Type="int" Mode="In" />
+    <Parameter Name="Disponibilidad" Type="int" Mode="In" />
+    <Parameter Name="CostoDepreciacion" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_MC2_ELIMINAR_VEHICULO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_MC2_INSERTAR_VEHICULO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Capacidad" Type="int" Mode="In" />
+    <Parameter Name="Consumo" Type="int" Mode="In" />
+    <Parameter Name="Distancia" Type="int" Mode="In" />
+    <Parameter Name="Disponibilidad" Type="int" Mode="In" />
+    <Parameter Name="CostoDepreciacion" Type="int" Mode="In" />
+    <Parameter Name="TC_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_MC2_LISTADO_CLIENTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_MIC2_EDITAR_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_MIC2_EDITAR_EMPLEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_MIC2_ELIMINAR_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_MIC2_ELIMINAR_EMPLEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_MIC2_INSERTAR_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="TCLI_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_MIC2_INSERTAR_COSTO_SERVICIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SRV_Id" Type="int" Mode="In" />
+    <Parameter Name="Viaticos" Type="int" Mode="In" />
+    <Parameter Name="GastosAdd" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_MIC2_INSERTAR_EMPLEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Estado" Type="int" Mode="In" />
+    <Parameter Name="TEMP_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_MIC2_INSERTAR_EMPLEADO_SERVICIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EMP_Id" Type="int" Mode="In" />
+    <Parameter Name="Servicio_Id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_MIC2_INSERTAR_SERVICIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="VH_Id" Type="int" Mode="In" />
+    <Parameter Name="CLT_Id" Type="int" Mode="In" />
+    <Parameter Name="FechaInicio" Type="date" Mode="In" />
+    <Parameter Name="FechaFin" Type="date" Mode="In" />
+    <Parameter Name="DireccionInicio" Type="varchar" Mode="In" />
+    <Parameter Name="DireccionFin" Type="varchar" Mode="In" />
+    <Parameter Name="Refencia_Papeleria" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="MiCamioncito2ModelStoreContainer">
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Costo_Servicio" EntityType="Self.Costo_Servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleado_Servicio" EntityType="Self.Empleado_Servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Carga" EntityType="Self.Tipo_Carga" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Cliente" EntityType="Self.Tipo_Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Empleado" EntityType="Self.Tipo_Empleado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_Cliente_TipoCliente" Association="Self.fk_Cliente_TipoCliente">
+      <End Role="Tipo_Cliente" EntitySet="Tipo_Cliente" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Costo_Servicio" Association="Self.fk_Costo_Servicio">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="Costo_Servicio" EntitySet="Costo_Servicio" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EmpleadoSRV_Empleado" Association="Self.fk_EmpleadoSRV_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Empleado_Servicio" EntitySet="Empleado_Servicio" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EmpleadoSRV_Servicio" Association="Self.fk_EmpleadoSRV_Servicio">
+      <End Role="Servicio" EntitySet="Servicio" />
+      <End Role="Empleado_Servicio" EntitySet="Empleado_Servicio" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Piloto_TipoEmpleado" Association="Self.fk_Piloto_TipoEmpleado">
+      <End Role="Tipo_Empleado" EntitySet="Tipo_Empleado" />
+      <End Role="Empleado" EntitySet="Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Servicio_Cliente" Association="Self.fk_Servicio_Cliente">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Servicio" EntitySet="Servicio" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Servicio_Vehiculo" Association="Self.fk_Servicio_Vehiculo">
+      <End Role="Vehiculo" EntitySet="Vehiculo" />
+      <End Role="Servicio" EntitySet="Servicio" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Vehiculo_Carga" Association="Self.fk_Vehiculo_Carga">
+      <End Role="Tipo_Carga" EntitySet="Tipo_Carga" />
+      <End Role="Vehiculo" EntitySet="Vehiculo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

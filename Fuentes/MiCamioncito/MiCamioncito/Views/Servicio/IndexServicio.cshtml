@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "IndexServicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Listado de Empleados disponibles</h2>
+        </div>
+        <div class="col-md-3 offset-md-3">
+            <a class="btn btn-primary" href="../Servicio/CrearServicio" role="button">Agregar Nuevo Servicio</a>
+            <a class="btn btn-primary" href="../Home/Index" role="button">Regresar</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Vehiculo Asignado</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Fecha Inicio</th>
+                        <th scope="col">Fecha Fin</th>
+                        <th scope="col">Direccion de recepción</th>
+                        <th scope="col">Direccion de entrega</th>
+                        <th scope="col">Referencia de Papeleria</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry the Bird</td>
+                        <td>twitter</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
